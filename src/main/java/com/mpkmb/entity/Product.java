@@ -7,7 +7,8 @@ import jakarta.validation.constraints.Min;
 @Table(name="products")
 public class Product {
 
-  @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Long id;
 
   @Column(nullable=false)

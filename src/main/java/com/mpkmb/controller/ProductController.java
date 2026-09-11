@@ -3,14 +3,14 @@ package com.mpkmb.controller;
 import com.mpkmb.dto.request.CreateProductRequest;
 import com.mpkmb.dto.response.ProductResponse;
 import com.mpkmb.service.ProductService;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
 @Path("/products")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class ProductController {
   private final ProductService productService;
 
@@ -19,13 +19,11 @@ public class ProductController {
   }
 
   @GET()
-  @Produces("application/json")
   public List<ProductResponse> getProducts() {
     return productService.getProducts();
   }
 
   @POST()
-  @Produces("application/json")
   public ProductResponse createProduct(CreateProductRequest request) {
     return productService.createProduct(request);
   }

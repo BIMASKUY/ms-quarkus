@@ -13,21 +13,29 @@ public class Order {
   @Min(1)
   private Long quantity;
 
-  @Column(nullable=false)
-  private Long productId;
+  @ManyToOne(
+    fetch = FetchType.LAZY,
+    optional = false
+  )
+  @JoinColumn(
+    name = "product_id",
+    referencedColumnName = "id",
+    nullable = false
+  )
+  Product product;
 
   protected Order() {}
 
-  public Order(Long quantity, Long productId) {
+  public Order(Long quantity, Product product) {
     this.quantity = quantity;
-    this.productId = productId;
+    this.product = product;
   }
 
   public Long getQuantity() {
     return quantity;
   }
 
-  public Long getProductId() {
-    return productId;
+  public Product getProduct() {
+    return product;
   }
 }

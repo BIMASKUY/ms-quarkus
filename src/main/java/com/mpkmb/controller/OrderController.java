@@ -18,7 +18,7 @@ public class OrderController {
     this.orderService = orderService;
   }
 
-  @GET
+  @GET()
   public List<OrderResponse> getOrders() {
     return orderService.getOrders();
   }
